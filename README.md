@@ -448,10 +448,3 @@ The market has consolidated considerably. Two acquisitions in particular reshape
 
 ---
 
-## Next steps for this repo
-
-- [ ] Add SPL cheatsheet
-- [ ] Add notes on Splunk architecture (forwarders, indexers, search heads)
-- [ ] Add worked examples from Splunk BOTS datasets
-- [ ] Map practice detections to MITRE ATT&CK techniques
-- [ ] Document lab setup
