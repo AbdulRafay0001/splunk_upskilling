@@ -171,7 +171,7 @@ This is why no data would be lost. The data was never only in one place.
 
 #### Search factor
 
-There is a companion setting called the **search factor**: how many of those copies are *searchable* copies rather than just raw backups.
+There is a companion setting called the **search factor**: how many of those copies are _searchable_ copies rather than just raw backups.
 
 Searchable copies include the index files that make searching fast, so they take up more disk. Raw copies are smaller but need processing before they can be searched. Search factor is always equal to or lower than replication factor.
 
@@ -189,11 +189,11 @@ The deployment server lets you define configuration centrally and push it out. F
 
 ### The three management servers, side by side
 
-| Component | What it manages | What it pushes |
-| --- | --- | --- |
-| **Deployer** | Search head cluster | Apps and configs to search head members |
-| **Cluster manager** | Indexer cluster | Coordinates bucket copies and replication |
-| **Deployment server** | Forwarders | Inputs and configs to forwarder agents |
+| Component             | What it manages     | What it pushes                            |
+| --------------------- | ------------------- | ----------------------------------------- |
+| **Deployer**          | Search head cluster | Apps and configs to search head members   |
+| **Cluster manager**   | Indexer cluster     | Coordinates bucket copies and replication |
+| **Deployment server** | Forwarders          | Inputs and configs to forwarder agents    |
 
 Deployer and deployment server are the pair most likely to get mixed up. The memory hook: **deployER goes to search hEads. Deployment SERVER goes to forwarders.** Not elegant, but it sticks.
 
@@ -409,8 +409,7 @@ General approach: build left to right. Narrow the data first, run calculations, 
 - **dedup**: removes duplicate values for selected fields
 - **sort**: orders results based on set arguments
 
-<!-- IMAGE PLACEHOLDER: SPL colour coding / example search breakdown -->
-<!-- ![SPL colour coding example](images/spl-colour-coding.png) -->
+![SPL colour coding example](images/spl-colour-coding.png)
 
 ---
 
@@ -462,11 +461,11 @@ Groups related events together based on a shared field, like session ID, user, o
 
 ### Transaction vs stats
 
-| | Transaction | Stats |
-| --- | --- | --- |
-| Speed | Slow, resource heavy | Fast, efficient |
-| Best for | Granular investigation, finding start/end points, correlations | Calculations, grouping and counting |
-| Event limit | Limited number of events per transaction | No limit |
+|             | Transaction                                                    | Stats                               |
+| ----------- | -------------------------------------------------------------- | ----------------------------------- |
+| Speed       | Slow, resource heavy                                           | Fast, efficient                     |
+| Best for    | Granular investigation, finding start/end points, correlations | Calculations, grouping and counting |
+| Event limit | Limited number of events per transaction                       | No limit                            |
 
 **Rule of thumb**: use stats by default. Only reach for transaction when you need to see the actual beginning and end of a related sequence of events, not just aggregate numbers.
 
@@ -553,15 +552,14 @@ Uses:
 
 ### Quick comparison
 
-| | eval | where | search |
-| --- | --- | --- | --- |
-| Purpose | Create/modify fields | Filter results (true/false) | Filter by keyword/wildcard |
-| Touches raw data | No | No | No |
-| Can be used before first pipe | N/A | No | Yes |
-| Typical pairing | if statements, time conversion | fillnull | wildcards |
+|                               | eval                           | where                       | search                     |
+| ----------------------------- | ------------------------------ | --------------------------- | -------------------------- |
+| Purpose                       | Create/modify fields           | Filter results (true/false) | Filter by keyword/wildcard |
+| Touches raw data              | No                             | No                          | No                         |
+| Can be used before first pipe | N/A                            | No                          | Yes                        |
+| Typical pairing               | if statements, time conversion | fillnull                    | wildcards                  |
 
-<!-- IMAGE PLACEHOLDER: eval / where / search example search -->
-<!-- ![eval, where and search example](images/eval-where-search.png) -->
+![eval, where and search example](images/eval-where-search.png)
 
 ---
 
@@ -617,13 +615,13 @@ Adds extra context or definitions to your search results. Examples:
 
 ### Key commands
 
-| Command | Purpose |
-| --- | --- |
-| `lookup` | Loads/references data from the lookup, useful for viewing contents or validating |
-| `OUTPUT` (with lookup) | Overwrites existing fields with lookup data |
-| `OUTPUTNEW` | Does not overwrite existing fields, keeps original data intact |
-| `inputlookup` | Searches/reads the contents of a lookup table |
-| `outputlookup` | Writes search results into a lookup table (updates or creates it) |
+| Command                | Purpose                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| `lookup`               | Loads/references data from the lookup, useful for viewing contents or validating |
+| `OUTPUT` (with lookup) | Overwrites existing fields with lookup data                                      |
+| `OUTPUTNEW`            | Does not overwrite existing fields, keeps original data intact                   |
+| `inputlookup`          | Searches/reads the contents of a lookup table                                    |
+| `outputlookup`         | Writes search results into a lookup table (updates or creates it)                |
 
 ### Quick note on dynamic data
 
@@ -686,11 +684,11 @@ Tables, single values, gauges, bar charts, line charts, pie charts, and maps bas
 
 Likely exam topic, comparing these three or picking the best one for a scenario.
 
-| Command | Key trait |
-| --- | --- |
-| stats | Basic statistical table, grouped by fields |
-| chart | Similar to stats but differs in how `by` and `over` are used, can generate a summarized version of a stats table, supports visual chart types |
-| timechart | Same idea as chart, but specifically shows statistical data over time |
+| Command   | Key trait                                                                                                                                     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| stats     | Basic statistical table, grouped by fields                                                                                                    |
+| chart     | Similar to stats but differs in how `by` and `over` are used, can generate a summarized version of a stats table, supports visual chart types |
+| timechart | Same idea as chart, but specifically shows statistical data over time                                                                         |
 
 ### Chart capabilities
 
@@ -699,13 +697,13 @@ Likely exam topic, comparing these three or picking the best one for a scenario.
 
 ### Visualization panel formatting options
 
-| Option | What it does |
-| --- | --- |
-| Stacking (on) | Stacks field values vertically within the same bar |
-| Stacking (off) | Each field gets its own separate bar, displayed side by side |
-| Overlay | Layers multiple charts (for example two line charts) on the same graph for trend comparison |
-| Trellis | Displays multiple charts at once, split out individually |
-| Multi-series | Controls whether fields share the same Y axis or not |
+| Option         | What it does                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| Stacking (on)  | Stacks field values vertically within the same bar                                          |
+| Stacking (off) | Each field gets its own separate bar, displayed side by side                                |
+| Overlay        | Layers multiple charts (for example two line charts) on the same graph for trend comparison |
+| Trellis        | Displays multiple charts at once, split out individually                                    |
+| Multi-series   | Controls whether fields share the same Y axis or not                                        |
 
 ### Timechart vs chart
 
@@ -713,7 +711,8 @@ Likely exam topic, comparing these three or picking the best one for a scenario.
 - Chart shows static, one-off totals (not broken down by time), better suited to a bar chart. Example: total average bytes per host over all time, roughly 2000 events per host.
 
 <!-- IMAGE PLACEHOLDER: chart count over host by description example -->
-<!-- ![chart example search](images/chart-over-host-by-description.png) -->
+
+![chart example search](images/chart-over-host-by-description.png)
 
 **Walkthrough of the example search above:**
 
@@ -915,13 +914,13 @@ Workflow actions save analysts time by pulling in outside context (like IP reput
 
 Likely easy exam topic. Key rule: hot bucket is the only writable bucket.
 
-| Bucket type | Writable? | Searchable? |
-| --- | --- | --- |
-| Hot | Yes | Yes |
-| Warm | No | Yes |
-| Cold | No | Yes |
-| Frozen | No | No (archived or deleted) |
-| Thawed | No | Yes (data restored from frozen) |
+| Bucket type | Writable? | Searchable?                     |
+| ----------- | --------- | ------------------------------- |
+| Hot         | Yes       | Yes                             |
+| Warm        | No        | Yes                             |
+| Cold        | No        | Yes                             |
+| Frozen      | No        | No (archived or deleted)        |
+| Thawed      | No        | Yes (data restored from frozen) |
 
 - Data flows in order based on age: hot to warm to cold to frozen
 - Frozen bucket data is not searchable, often used for long term storage or compliance retention
@@ -957,10 +956,10 @@ Imagine web store traffic growing larger every day. Searches against that raw in
 
 ### Two ways to use "datamodel"
 
-| Usage | Purpose |
-| --- | --- |
-| As a command | Search existing data models and their datasets directly, useful for verification |
-| As an argument | Specify which data model to search against within a larger query |
+| Usage          | Purpose                                                                          |
+| -------------- | -------------------------------------------------------------------------------- |
+| As a command   | Search existing data models and their datasets directly, useful for verification |
+| As an argument | Specify which data model to search against within a larger query                 |
 
 ### Example command patterns mentioned
 
