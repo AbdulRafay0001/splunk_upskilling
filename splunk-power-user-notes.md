@@ -988,15 +988,3 @@ Different data sources often use different field names for the same type of info
 4. **Required for premium apps**: Enterprise Security (ES) requires CIM compliant data, since it relies heavily on data models to operate and search
 5. **Team consistency**: makes searching predictable and easier to train new Splunk users on, since everyone references the same standardized fields
 6. **Compliance and auditing tool**: can be used to measure what percentage of your data is CIM compliant, useful if your organization has specific compliance requirements around data standardization
-
-### Important note
-
-The CIM is not mandatory to use. Adoption depends on your organization's size, compliance needs, and how standardized you want data access to be across teams.
-
----
-
-## Modules not yet covered
-
-- Mod 17
-- Mod 23
-- Mod 24
